@@ -32,10 +32,11 @@ export interface ApiError extends Error {
 // Validate and get API base URL
 const getApiBaseUrl = (): string => {
   const url = import.meta.env.VITE_API_URL;
-  console.log('API base URL:', url);
+  console.log('API base URL from env:', url);
+  
   if (!url) {
-    console.warn('VITE_API_URL is not defined, falling back to localhost');
-    return 'http://localhost:5000/api';
+    console.warn('VITE_API_URL is not defined, falling back to production URL');
+    return 'https://bmserver-web.vercel.app/api';
   }
   
   // Ensure URL ends with /api
